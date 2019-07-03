@@ -8,7 +8,7 @@ node {
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
-      archiveArtifacts 'target/*.jar'
+      archiveArtifacts 'target/*.war'
    }
    stage('Deploy') {
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
