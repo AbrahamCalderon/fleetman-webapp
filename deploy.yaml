@@ -139,7 +139,7 @@
 
   - name: Deallocate the EIP
     ec2_eip:
-       device_id: "{{ old_green.instances[0].id }}"
+       device_id: "{{ old_green.instances[0].instance_id }}"
        ip: "{{ live_ip_address }}"
        state: absent
        region: "{{ region }}"
@@ -151,7 +151,7 @@
   
   - name: Allocate the EIP to the new instance
     ec2_eip:
-      device_id: "{{ new_server.instances[0].id }}"
+      device_id: "{{ new_server.instances[0].instance_id }}"
       ip: "{{ live_ip_address }}"
       region: "{{ region }}"
 
@@ -167,7 +167,7 @@
   - name: All done, set new server to Green status
     ec2_tag:
        region: "{{ region }}"
-       resource: "{{ new_server.instances[0].id }}"
+       resource: "{{ new_server.instances[0].instance_id }}"
        tags:
           Deploy: Green
        state: present
@@ -175,7 +175,7 @@
   - name: Remove Blue Tag
     ec2_tag:
        region: "{{ region }}"
-       resource: "{{ new_server.instances[0].id }}"
+       resource: "{{ new_server.instances[0].instance_id }}"
        tags:
           Deploy: Blue
        state: absent
