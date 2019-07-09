@@ -144,7 +144,11 @@
        state: absent
        region: "{{ region }}"
     when: old_green.instances[0].id is defined
-
+  
+  - name: Debug the new server variable
+    debug:
+      msg: "New Server variable: {{ new_server }}"
+  
   - name: Allocate the EIP to the new instance
     ec2_eip:
       device_id: "{{ new_server.instances[0].id }}"
