@@ -7,7 +7,7 @@
      keypair_name: microservice-course-keypair
      instance_type: t2.nano
      image_name: ami-07669fc90e6e6cc47
-     live_ip_address: 34.215.122.160
+     live_ip_address: 52.33.16.35
   
   tasks:
     - name: Setup variables for later
